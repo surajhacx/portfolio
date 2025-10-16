@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suraj Theekshana - Red Teamer</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&family=JetBrains+Mono:wght@300;400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;600&display=swap');
         
         * {
             margin: 0;
@@ -16,1128 +16,320 @@
         :root {
             --accent-teal: #4ecca3;
             --accent-cyan: #45b7b8;
-            --accent-blue: #6c7ce0;
-            --accent-gray: #a4b0be;
-            --subtle-green: #2ed573;
-            --muted-orange: #ffa726;
             --dark-bg: #1a1a1a;
-            --darker-bg: #0f0f0f;
             --card-bg: #2d2d2d;
-            --grid-color: #333333;
             --text-primary: #e8e8e8;
             --text-secondary: #b0b0b0;
-            --text-accent: #4ecca3;
-            --glass-bg: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.05);
-        }
-
-        /* Simplified Cursor */
-        * {
-            cursor: none;
-        }
-
-        .cursor {
-            position: fixed;
-            width: 12px;
-            height: 12px;
-            background: var(--accent-teal);
-            border-radius: 50%;
-            z-index: 10000;
-            pointer-events: none;
-            box-shadow: 0 0 10px var(--accent-teal);
-            transform: translate(-50%, -50%);
-            transition: transform 0.1s ease;
-            opacity: 0.8;
         }
 
         body {
             font-family: 'Rajdhani', sans-serif;
             background: var(--dark-bg);
             color: var(--text-primary);
-            overflow-x: hidden;
-            min-height: 100vh;
-            position: relative;
-        }
-
-        /* Subtle Grid Background */
-        .cyber-grid {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -3;
-            background-image: 
-                linear-gradient(var(--grid-color) 1px, transparent 1px),
-                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-            background-size: 40px 40px;
-            opacity: 0.3;
-        }
-
-        /* Minimal Floating Particles */
-        .cyber-particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        .particle {
-            position: absolute;
-            border-radius: 50%;
-            animation: float linear infinite;
-            opacity: 0.4;
-        }
-
-        .particle.small {
-            width: 2px;
-            height: 2px;
-            background: var(--accent-teal);
-        }
-
-        .particle.medium {
-            width: 3px;
-            height: 3px;
-            background: var(--accent-cyan);
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(100vh) scale(0);
-                opacity: 0;
-            }
-            10%, 90% {
-                opacity: 0.4;
-            }
-            100% {
-                transform: translateY(-100vh) scale(1);
-                opacity: 0;
-            }
-        }
-
-        /* Subtle Terminal */
-        .holo-terminal {
-            max-width: 1400px;
-            margin: 20px auto;
-            background: var(--glass-bg);
-            border: 1px solid var(--accent-teal);
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
-            box-shadow: 
-                0 4px 20px rgba(0, 0, 0, 0.3),
-                0 0 20px rgba(78, 204, 163, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .terminal-header {
-            background: linear-gradient(135deg, var(--darker-bg), var(--card-bg));
-            padding: 20px 30px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid var(--accent-teal);
-            position: relative;
-        }
-
-        .holo-controls {
-            display: flex;
-            gap: 12px;
-        }
-
-        .holo-btn {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-        }
-
-        .holo-btn.danger { 
-            background: #e74c3c;
-        }
-        .holo-btn.warning { 
-            background: #f39c12;
-        }
-        .holo-btn.success { 
-            background: var(--subtle-green);
-        }
-
-        .terminal-title {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 16px;
-            color: var(--text-accent);
-            text-shadow: 0 0 5px rgba(78, 204, 163, 0.3);
-        }
-
-        /* Main Content */
-        .cyber-body {
-            padding: 40px;
-            min-height: 80vh;
-            position: relative;
-        }
-
-        /* Simplified Avatar */
-        .cyber-avatar {
-            text-align: center;
-            margin-bottom: 40px;
-            position: relative;
-        }
-
-        .avatar-container {
-            display: inline-block;
-            position: relative;
-            width: 180px;
-            height: 180px;
-            margin: 0 auto 30px;
-        }
-
-        .avatar-ring {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            border: 2px solid transparent;
-            border-radius: 50%;
-            opacity: 0.6;
-        }
-
-        .avatar-ring:nth-child(1) {
-            width: 200px;
-            height: 200px;
-            border-color: var(--accent-teal) transparent;
-            animation: spin 8s linear infinite;
-        }
-
-        .avatar-ring:nth-child(2) {
-            width: 160px;
-            height: 160px;
-            border-color: transparent var(--accent-cyan);
-            animation: spin 6s linear infinite reverse;
-        }
-
-        @keyframes spin {
-            0% { transform: translate(-50%, -50%) rotate(0deg); }
-            100% { transform: translate(-50%, -50%) rotate(360deg); }
-        }
-
-        .cyber-logo {
-            position: relative;
-            z-index: 2;
-            width: 140px;
-            height: 140px;
-            background: linear-gradient(145deg, var(--accent-teal), var(--accent-cyan));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Orbitron', monospace;
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--text-primary);
-            box-shadow: 
-                0 0 20px rgba(78, 204, 163, 0.3),
-                inset 0 0 20px rgba(0, 0, 0, 0.2);
-            margin: 20px auto;
-            overflow: hidden;
-        }
-
-        .profile-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-            opacity: 0.9;
-            transition: all 0.3s ease;
-        }
-
-        .cyber-logo:hover .profile-image {
-            opacity: 1;
-            transform: scale(1.05);
-        }
-
-        /* Subtle Typography */
-        .cyber-title {
-            font-family: 'Orbitron', monospace;
-            font-size: 42px;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, var(--accent-teal), var(--accent-cyan));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            position: relative;
-        }
-
-        .cyber-subtitle {
-            text-align: center;
-            font-size: 20px;
-            color: var(--text-accent);
-            margin-bottom: 40px;
-            font-weight: 500;
-            letter-spacing: 2px;
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        /* Subtle Glassmorphism Cards */
-        .cyber-grid-layout {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-
-        .neon-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            padding: 30px;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .neon-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 
-                0 8px 25px rgba(0, 0, 0, 0.3),
-                0 0 15px rgba(78, 204, 163, 0.1);
-            border-color: var(--accent-teal);
-        }
-
-        .card-header {
-            font-family: 'Orbitron', monospace;
-            font-size: 18px;
-            color: var(--accent-teal);
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .card-icon {
-            font-size: 20px;
-            opacity: 0.8;
-        }
-
-        /* Subtle Stats */
-        .stat-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 12px 0;
-            padding: 12px;
-            background: var(--glass-bg);
-            border-radius: 8px;
-            border-left: 3px solid var(--accent-teal);
-            backdrop-filter: blur(5px);
-            transition: all 0.3s ease;
-        }
-
-        .stat-item:hover {
-            transform: translateX(3px);
-            border-left-color: var(--accent-cyan);
-        }
-
-        .stat-bar {
-            width: 60%;
-            height: 6px;
-            background: var(--glass-bg);
-            border-radius: 3px;
-            overflow: hidden;
-            border: 1px solid var(--glass-border);
-        }
-
-        .stat-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--accent-teal), var(--accent-cyan));
-            border-radius: 3px;
-            animation: fillUp 2s ease-out;
-        }
-
-        @keyframes fillUp {
-            0% { width: 0%; }
-            100% { width: var(--fill-width, 85%); }
-        }
-
-        /* Subtle Certification Badges */
-        .cert-showcase {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
-        }
-
-        .cert-badge {
-            background: var(--glass-bg);
-            border: 1px solid var(--accent-blue);
-            border-radius: 12px;
             padding: 20px;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            backdrop-filter: blur(8px);
+            line-height: 1.6;
         }
 
-        .cert-badge:hover {
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: 36px;
+            color: var(--accent-teal);
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--accent-cyan);
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        h2 {
+            font-family: 'Orbitron', monospace;
+            color: var(--accent-teal);
+            font-size: 20px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--accent-teal);
+            padding-bottom: 10px;
+        }
+
+        .skills {
+            display: grid;
+            gap: 10px;
+        }
+
+        .skill-item {
+            background: rgba(78, 204, 163, 0.1);
+            padding: 10px 15px;
+            border-radius: 5px;
+            border-left: 3px solid var(--accent-teal);
+        }
+
+        .companies {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .company {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid rgba(78, 204, 163, 0.3);
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .company:hover {
             transform: translateY(-3px);
             border-color: var(--accent-teal);
-            box-shadow: 0 8px 20px rgba(78, 204, 163, 0.2);
+            box-shadow: 0 5px 15px rgba(78, 204, 163, 0.2);
+        }
+
+        .company-logo {
+            width: 60px;
+            height: 45px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+
+        .cve {
+            background: linear-gradient(135deg, var(--accent-teal), var(--accent-cyan));
+            color: white;
+            padding: 10px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 5px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .cert {
+            background: rgba(78, 204, 163, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 3px solid var(--accent-cyan);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .cert:hover {
+            transform: translateX(5px);
+            background: rgba(78, 204, 163, 0.15);
         }
 
         .cert-logo {
             width: 50px;
             height: 50px;
-            margin: 0 auto 10px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
+            object-fit: contain;
         }
 
-        .cert-badge:hover .cert-logo {
-            transform: scale(1.05);
-        }
-
-        /* Subtle CVE Displays */
-        .cve-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin: 20px 0;
-        }
-
-        .cve-chip {
-            background: linear-gradient(135deg, var(--accent-teal), var(--accent-blue));
-            color: white;
-            padding: 12px 20px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 13px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(78, 204, 163, 0.2);
-        }
-
-        .cve-chip:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(78, 204, 163, 0.3);
-        }
-
-        /* Subtle Company Grid */
-        .company-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
-        }
-
-        .company-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 10px;
-            padding: 15px;
-            text-align: center;
-            text-decoration: none;
-            color: var(--text-primary);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(8px);
-        }
-
-        .company-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--accent-teal);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .company-logo {
-            width: 40px;
-            height: 30px;
-            margin: 0 auto 10px;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-
-        .company-card:hover .company-logo {
-            transform: scale(1.05);
-        }
-
-        /* Subtle Contact Section */
-        .contact-panel {
-            background: var(--glass-bg);
-            border: 1px solid var(--accent-teal);
-            border-radius: 15px;
-            padding: 40px;
+        .contact {
             text-align: center;
             margin-top: 40px;
-            backdrop-filter: blur(12px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .status-online {
-            font-size: 22px;
-            color: var(--subtle-green);
-            font-weight: 600;
-            margin-bottom: 20px;
-            font-family: 'JetBrains Mono', monospace;
+            padding: 30px;
+            background: rgba(78, 204, 163, 0.05);
+            border-radius: 10px;
+            border: 1px solid var(--accent-teal);
         }
 
         .contact-btn {
             display: inline-block;
             background: linear-gradient(135deg, var(--accent-teal), var(--accent-cyan));
             color: white;
-            padding: 15px 30px;
+            padding: 12px 25px;
             border-radius: 25px;
             text-decoration: none;
+            margin: 10px;
             font-weight: 600;
-            font-size: 14px;
-            margin: 12px;
-            transition: all 0.3s ease;
-            font-family: 'Orbitron', monospace;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            box-shadow: 0 3px 10px rgba(78, 204, 163, 0.2);
         }
 
         .contact-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(78, 204, 163, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(78, 204, 163, 0.3);
         }
 
-        /* Subtle Quote Section */
-        .cyber-quote-section {
-            margin-bottom: 40px;
+        ul {
+            list-style: none;
+            padding: 0;
         }
 
-        .quote-card {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 30px;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        li {
+            padding: 8px 0;
+            color: var(--text-secondary);
         }
 
-        .quote-text {
-            font-family: 'Orbitron', monospace;
-            color: var(--accent-cyan);
-            font-weight: 500;
-            font-size: 18px;
-            text-align: center;
-            line-height: 1.6;
-            padding: 20px;
-            background: var(--glass-bg);
-            border-radius: 8px;
-            border-left: 3px solid var(--accent-cyan);
-            backdrop-filter: blur(8px);
-            position: relative;
-        }
-
-        .quote-text::before {
-            content: '"';
-            font-size: 40px;
-            position: absolute;
-            top: -10px;
-            left: 15px;
+        li:before {
+            content: "▹ ";
             color: var(--accent-teal);
-            opacity: 0.6;
-        }
-
-        .quote-text::after {
-            content: '"';
-            font-size: 40px;
-            position: absolute;
-            bottom: -25px;
-            right: 15px;
-            color: var(--accent-teal);
-            opacity: 0.6;
-        }
-
-        /* Subtle Recommendation Modal */
-        .recommendation-modal {
-            display: none;
-            position: fixed;
-            z-index: 10001;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(10px);
-        }
-
-        .recommendation-modal-content {
-            position: relative;
-            margin: 3% auto;
-            padding: 30px;
-            width: 95%;
-            max-width: 900px;
-            background: var(--glass-bg);
-            border: 1px solid var(--accent-teal);
-            border-radius: 12px;
-            box-shadow: 0 0 30px rgba(78, 204, 163, 0.2);
-            text-align: center;
-            backdrop-filter: blur(15px);
-        }
-
-        .recommendation-close {
-            position: absolute;
-            right: 15px;
-            top: 15px;
-            font-size: 24px;
             font-weight: bold;
-            color: var(--accent-teal);
-            cursor: pointer;
-            width: 35px;
-            height: 35px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background: var(--glass-bg);
-            border: 1px solid var(--accent-teal);
-            transition: all 0.3s ease;
         }
 
-        .recommendation-close:hover {
-            background: rgba(78, 204, 163, 0.1);
-            transform: scale(1.1);
-        }
-
-        .recommendation-modal img {
-            max-width: 100%;
-            max-height: 75vh;
-            border-radius: 10px;
-            border: 2px solid var(--accent-blue);
-            box-shadow: 0 0 20px rgba(108, 124, 224, 0.2);
-        }
-
-        /* Responsive Design */
         @media (max-width: 768px) {
-            .holo-terminal {
-                margin: 10px;
-                border-radius: 10px;
-            }
-            
-            .cyber-body {
+            .container {
                 padding: 20px;
             }
             
-            .cyber-title {
-                font-size: 32px;
+            h1 {
+                font-size: 28px;
             }
             
-            .cyber-grid-layout {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            .company-grid {
+            .companies {
                 grid-template-columns: repeat(2, 1fr);
             }
-
-            .quote-text {
-                font-size: 16px;
-                padding: 20px;
-            }
-
-            .contact-panel {
-                padding: 25px;
-            }
-
-            .contact-btn {
-                padding: 12px 25px;
-                margin: 8px;
-                font-size: 13px;
-            }
-
-            .avatar-container {
-                width: 150px;
-                height: 150px;
-            }
-
-            .cyber-logo {
-                width: 120px;
-                height: 120px;
-            }
-        }
-
-        /* Subtle Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--darker-bg);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--accent-teal);
-            border-radius: 4px;
-            opacity: 0.7;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--accent-cyan);
         }
     </style>
 </head>
 <body>
-    <!-- Custom Cursor -->
-    <div class="cursor"></div>
-    
-    <!-- Background Elements -->
-    <div class="cyber-grid"></div>
-    <div class="cyber-particles" id="particles"></div>
-    
-    <div class="holo-terminal">
-        <div class="terminal-header">
-            <div class="holo-controls">
-                <div class="holo-btn danger"></div>
-                <div class="holo-btn warning"></div>
-                <div class="holo-btn success"></div>
-            </div>
-            <div class="terminal-title">SECURE_SHELL.EXE - System Online</div>
+    <div class="container">
+        <h1>SURAJ THEEKSHANA</h1>
+        <div class="subtitle">Red Team Engineer • Bug Hunter</div>
+
+        <div class="section">
+            <h2>About</h2>
+            <p style="color: var(--text-secondary);">
+                Offensive security professional specializing in penetration testing, vulnerability research, and exploit development. 
+                Dedicated to identifying security weaknesses and helping organizations strengthen their defenses.
+            </p>
         </div>
-        
-        <div class="cyber-body">
-            <div class="cyber-avatar">
-                <div class="avatar-container">
-                    <div class="avatar-ring"></div>
-                    <div class="avatar-ring"></div>
-                    <div class="cyber-logo">
-                        <img src="https://media.licdn.com/dms/image/v2/D5603AQEZpnWFae3HjA/profile-displayphoto-shrink_200_200/B56ZZNpQXTGsAY-/0/1745059383310?e=1760572800&v=beta&t=xEJh5ne8pobaIpimp53gL4mo4mlk-qpMoeUxOiojDpw" alt="Suraj Theekshana" class="profile-image" />
-                    </div>
-                </div>
-                <h1 class="cyber-title">SURAJ THEEKSHANA</h1>
-                <div class="cyber-subtitle">RED_TEAM_ENGINEER • BUG_HUNTER</div>
+
+        <div class="section">
+            <h2>Skills</h2>
+            <div class="skills">
+                <div class="skill-item">Application Security Testing</div>
+                <div class="skill-item">Network Penetration Testing</div>
+                <div class="skill-item">Exploit Development</div>
+                <div class="skill-item">Social Engineering</div>
+                <div class="skill-item">Wireless Security Testing</div>
+                <div class="skill-item">API Security Audits</div>
             </div>
+        </div>
 
-            <!-- Quote Section -->
-            <div class="cyber-quote-section">
-                <div class="neon-card quote-card">
-                    <div class="quote-text">
-                        There are only two types of companies in the world: those that have been breached and know it and those that have been breached and don’t know it. — Ted Schlein
-                    </div>
-                </div>
-            </div>
+        <div class="section">
+            <h2>Certifications</h2>
+            <a href="https://credentials.offsec.com/37444eda-dfea-49f2-b8c8-f5ea3564338d#acc.ZeiPxRKg" target="_blank" class="cert">
+                <img src="https://www.offsec.com/_astro/OSCP-plus.BZHuApYA_Ztlntl.svg" alt="OSCP+" class="cert-logo" />
+                <span>OSCP+ - Offensive Security Certified Professional Plus</span>
+            </a>
+            <a href="https://credentials.offsec.com/9744230a-c5a7-4a5b-9879-9b854cabc25f#acc.quvORTWt" target="_blank" class="cert">
+                <img src="https://images.credly.com/images/ec81134d-e80b-4eb5-ae07-0eb8e1a60fcd/image.png" alt="OSCP" class="cert-logo" />
+                <span>OSCP - Offensive Security Certified Professional</span>
+            </a>
+            <a href="https://credentials.offsec.com/47a38259-6cca-4c59-a066-6dd650ed1f85#acc.sw4pjbR7" target="_blank" class="cert">
+                <img src="https://cdn.sanity.io/images/t7y0tkf4/production/ea74dbe1235676244262fd9ebb3cf37b7783c0d7-300x300.svg" alt="OSWP" class="cert-logo" />
+                <span>OSWP - Offensive Security Wireless Professional</span>
+            </a>
+            <a href="https://hacktheoffshore.com/" target="_blank" class="cert">
+                <img src="https://www.hackthebox.com/images/landingv3/offshore-icon.webp" alt="HTB Offshore" class="cert-logo" />
+                <span>HTB Offshore Certified</span>
+            </a>
+        </div>
 
-            <div class="cyber-grid-layout">
-                <!-- Identity Matrix -->
-                <div class="neon-card">
-                    <div class="card-header">
-                        <span class="card-icon">🔮</span>
-                        IDENTITY_MATRIX.EXE
-                    </div>
-                    <div class="stat-item">
-                        <span>Class:</span>
-                        <span style="color: var(--accent-teal); font-weight: 600;">Red Teamer</span>
-                    </div>
-                    <div class="stat-item">
-                        <span>Specialization:</span>
-                        <span style="color: var(--accent-blue); font-weight: 600;">Penetration Testing</span>
-                    </div>
-                    <div class="stat-item">
-                        <span>Status:</span>
-                        <span style="color: var(--subtle-green); font-weight: 600;">ONLINE • READY</span>
-                    </div>
-                    <div style="margin-top: 20px; text-align: center; font-style: italic; color: var(--accent-gray); font-size: 14px;">
-                        "Code is my katana, vulnerabilities are my target"
-                    </div>
-                </div>
+        <div class="section">
+            <h2>CVE Discoveries</h2>
+            <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-34452" target="_blank" class="cve">CVE-2024-34452</a>
+            <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-48605" target="_blank" class="cve">CVE-2024-48605</a>
+            <p style="margin-top: 15px; color: var(--text-secondary); font-size: 14px;">
+                Responsible disclosure protocols followed for all vulnerabilities
+            </p>
+        </div>
 
-                <!-- Skill Matrix -->
-                <div class="neon-card">
-                    <div class="card-header">
-                        <span class="card-icon">⚡</span>
-                        SKILL_MATRIX.DB
-                    </div>
-                    <div class="stat-item">
-                        <span>Application Security</span>
-                        <div class="stat-bar">
-                            <div class="stat-fill" style="--fill-width: 95%;"></div>
-                        </div>
-                    </div>
-                    <div class="stat-item">
-                        <span>Network Penetration</span>
-                        <div class="stat-bar">
-                            <div class="stat-fill" style="--fill-width: 95%;"></div>
-                        </div>
-                    </div>
-                    <div class="stat-item">
-                        <span>Exploit Development</span>
-                        <div class="stat-bar">
-                            <div class="stat-fill" style="--fill-width: 95%;"></div>
-                        </div>
-                    </div>
-                    <div class="stat-item">
-                        <span>Social Engineering</span>
-                        <div class="stat-bar">
-                            <div class="stat-fill" style="--fill-width: 95%;"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Target Network -->
-            <div class="neon-card">
-                <div class="card-header">
-                    <span class="card-icon">🎯</span>
-                    TARGET_NETWORK.MAP
-                </div>
-                <div style="color: var(--text-secondary); margin-bottom: 20px; font-size: 14px;">
-                    Earned recognition from global entities:
-                </div>
-                <div class="company-grid">
-                    <a href="https://www.allianz.com/en/about-us/at-a-glance/strategy-values/it-security.html" target="_blank" class="company-card">
-                        <img src="https://vectorseek.com/wp-content/uploads/2023/04/Allianz-Group-Logo-Vector.jpg" alt="Allianz" width="60" />
-                    </a>
-                    <a href="https://www.crowdstrike.com/" target="_blank" class="company-card">
-                        <img src="https://cdn.brandfetch.io/idfOAAUeK0/w/200/h/200/theme/dark/icon.png?c=1bxid64Mup7aczewSAYMX&t=1667859785600" alt="CrowdStrike" width="60" />
-                    </a>
-                    <a href="https://www.nokia.com/about-us/security/" target="_blank" class="company-card">
-                        <img src="https://static.wikitide.net/avidwiki/1/1f/Nokia_Startup_Movie.jpg" alt="Nokia" width="60" />
-                    </a>
-                    <a href="https://drexel.edu/it/security/" target="_blank" class="company-card">
-                        <img src="https://cdn.freebiesupply.com/logos/large/2x/drexel-university-logo-svg-vector.svg" alt="Drexel Univ" width="60" />
-                    </a>
-                    <a href="https://www.pornhub.com" target="_blank" class="company-card">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeBdxUS86wJt4xWkzLOeq_Iw8dfYHCkpT1yA&s" alt="PornHub" width="60" />
-                    </a>
-                    <a href="https://bugzero.io/" target="_blank" class="company-card">
-                        <img src="https://firebasestorage.googleapis.com/v0/b/bug-zero.appspot.com/o/images%2Forganization%2Fbz%2Fbugzero-dp.png?alt=media&token=60e6a9bf-ef01-4e46-9cd0-1f903e3d9362" alt="BugZero" width="60" />
-                    </a>
-                    <a href="https://payhere.lk/" target="_blank" class="company-card">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoeIMMXQtHb84AMCRDeeBMQD7OrNFnGP20Lg&s" alt="PayHere" width="60" />
-                    </a>
-                    <a href="https://www.helakuru.lk/" target="_blank" class="company-card">
-                        <img src="https://www.helakuru.lk/assets/images/helakuru-logo1.png" alt="Helakuru" width="60" />
-                    </a>
-                    <a href="https://wso2.com/security/" target="_blank" class="company-card">
-                        <img src="https://lh5.googleusercontent.com/proxy/LcYZthkTkOuQw6QhwJvw3dLYSHCGoavDrbbWV2LDMsLEIPOt7yc0cTzeEOwTHezUSBVvJdkPwa1pTsTFZCcbf9vgiLU7M8VvmcNiLDMLqaeriy25Ask" alt="WSO2" width="60" />
-                    </a>
-                    <a href="https://wso2.com/choreo" target="_blank" class="company-card">
-                        <img src="https://wso2.cachefly.net/wso2/sites/all/image_resources/choreo/modernize-your-application.webp" alt="Choreo" width="60" />
-                    </a>
-                    <a href="https://www.msi.com" target="_blank" class="company-card">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbiwpp4JAeCRgZnUfltr1VpIe08bKt7djnnWWwByg4t1iEW596YdLSjpWalijrZF8ivVw&usqp=CAU" alt="MSI" width="60" />
-                    </a>
-                    <a href="https://www.philips.com/global" target="_blank" class="company-card">
-                        <img src="https://www.acbengineering.co.th/wp-content/uploads/2020/05/PHILIPS-%E0%B8%AB%E0%B8%A5%E0%B8%AD%E0%B8%94%E0%B9%84%E0%B8%9F-%E0%B8%9A%E0%B8%B1%E0%B8%A5%E0%B8%A5%E0%B8%B2%E0%B8%AA%E0%B8%95%E0%B9%8C-%E0%B9%82%E0%B8%84%E0%B8%A1%E0%B9%84%E0%B8%9F-logo-.png" alt="Philips" width="60" />
-                    </a>
-                </div>
-            </div>
-
-            <!-- Certifications -->
-            <div class="neon-card">
-                <div class="card-header">
-                    <span class="card-icon">🏅</span>
-                    DIGITAL_CERTIFICATES.VAULT
-                </div>
-                <div class="cert-showcase">
-                    <a href="https://credentials.offsec.com/37444eda-dfea-49f2-b8c8-f5ea3564338d#acc.ZeiPxRKg" target="_blank" class="cert-badge">
-                        <img src="https://www.offsec.com/_astro/OSCP-plus.BZHuApYA_Ztlntl.svg" alt="OSCP+" class="cert-logo" />
-                    </a>
-                    <a href="https://credentials.offsec.com/9744230a-c5a7-4a5b-9879-9b854cabc25f#acc.quvORTWt" target="_blank" class="cert-badge">
-                        <img src="https://images.credly.com/images/ec81134d-e80b-4eb5-ae07-0eb8e1a60fcd/image.png" alt="OSCP" class="cert-logo" />
-                    </a>
-                    <a href="https://credentials.offsec.com/47a38259-6cca-4c59-a066-6dd650ed1f85#acc.sw4pjbR7" target="_blank" class="cert-badge">
-                        <img src="https://cdn.sanity.io/images/t7y0tkf4/production/ea74dbe1235676244262fd9ebb3cf37b7783c0d7-300x300.svg" alt="OSWP" class="cert-logo" />
-                    </a>
-                    <a href="https://hacktheoffshore.com/" target="_blank" class="cert-badge">
-                        <img src="https://www.hackthebox.com/images/landingv3/offshore-icon.webp" alt="HTB Offshore" class="cert-logo" />
-                    </a>
-                </div>
-            </div>
-
-            <!-- Recommendation Letters -->
-            <div class="neon-card">
-                <div class="card-header">
-                    <span class="card-icon">📜</span>
-                    ENDORSEMENT_PROTOCOLS.DAT
-                </div>
-                <div style="color: var(--text-secondary); margin-bottom: 20px; font-size: 14px;">
-                    Professional Recognition & Recommendations:
-                </div>
-                <div style="background: var(--glass-bg); border: 1px solid var(--accent-teal); border-radius: 10px; padding: 20px; margin: 20px 0; backdrop-filter: blur(8px);">
-                    <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                        <div style="width: 50px; height: 50px; background: linear-gradient(45deg, var(--accent-blue), var(--accent-teal)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
-                            <span style="font-size: 20px;">🏆</span>
-                        </div>
-                        <div>
-                            <div style="color: var(--accent-teal); font-family: 'Orbitron', monospace; font-weight: 600; font-size: 16px;">Bhasha Lanka (Pvt) Ltd</div>
-                            <div style="color: var(--text-secondary); font-size: 12px;">Official Recognition & Recommendation</div>
-                        </div>
-                    </div>
-                    
-                    <div style="text-align: center; margin: 20px 0;">
-                        <img src="https://raw.githubusercontent.com/surajhacx/Recommendation_Letters/refs/heads/main/bhasha.png" 
-                             alt="Bhasha Lanka Foundation Recommendation Letter" 
-                             style="width: 100%; max-width: 500px; height: auto; border-radius: 8px; border: 2px solid var(--accent-blue); box-shadow: 0 0 15px rgba(108, 124, 224, 0.2); cursor: pointer;"
-                             onclick="openRecommendationModal(this.src)" />
-                    </div>
-                    
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; margin-top: 20px;">
-                        <div style="text-align: center; padding: 12px; background: var(--glass-bg); border-radius: 6px; border-left: 2px solid var(--accent-blue); backdrop-filter: blur(5px);">
-                            <div style="color: var(--accent-blue); font-weight: 500; font-size: 10px;">CERTIFICATION TYPE</div>
-                            <div style="color: var(--text-primary); font-size: 12px; font-weight: 500;">Professional Endorsement</div>
-                        </div>
-                        <div style="text-align: center; padding: 12px; background: var(--glass-bg); border-radius: 6px; border-left: 2px solid var(--accent-teal); backdrop-filter: blur(5px);">
-                            <div style="color: var(--accent-teal); font-weight: 500; font-size: 10px;">ORGANIZATION</div>
-                            <div style="color: var(--text-primary); font-size: 12px; font-weight: 500;">Bhasha Lanka (Pvt) Ltd</div>
-                        </div>
-                        <div style="text-align: center; padding: 12px; background: var(--glass-bg); border-radius: 6px; border-left: 2px solid var(--subtle-green); backdrop-filter: blur(5px);">
-                            <div style="color: var(--subtle-green); font-weight: 500; font-size: 10px;">STATUS</div>
-                            <div style="color: var(--subtle-green); font-size: 12px; font-weight: 600;">VERIFIED ✓</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- CVE Exploits -->
-            <div class="neon-card">
-                <div class="card-header">
-                    <span class="card-icon">💀</span>
-                    VULNERABILITY_ARSENAL.LOG
-                </div>
-                <div style="margin-bottom: 20px;">
-                    <div style="color: var(--text-secondary); margin-bottom: 15px; font-size: 14px;">Discovered Critical Vulnerabilities:</div>
-                    <div class="cve-container">
-                        <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-34452" target="_blank" class="cve-chip">CVE-2024-34452</a>
-                        <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-48605" target="_blank" class="cve-chip">CVE-2024-48605</a>
-                    </div>
-                </div>
-                
-                <div style="background: var(--glass-bg); border-left: 3px solid var(--accent-teal); padding: 15px; border-radius: 8px; margin-bottom: 15px; backdrop-filter: blur(8px);">
-                    <div style="color: var(--accent-teal); font-weight: 600; margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; font-size: 13px;">CVE-2024-34452 • Medium Severity</div>
-                    <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.4;">CMSimple_XH 1.7.6 - Cross-site scripting via malicious SVG upload. DOM manipulation achieved through file upload bypass.</div>
-                </div>
-
-                <div style="background: var(--glass-bg); border-left: 3px solid var(--muted-orange); padding: 15px; border-radius: 8px; backdrop-filter: blur(8px);">
-                    <div style="color: var(--muted-orange); font-weight: 600; margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; font-size: 13px;">CVE-2024-48605 • CRITICAL Severity</div>
-                    <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.4;">Helakuru Desktop v1.1 - Local privilege escalation via DLL hijacking. Arbitrary code execution achieved with elevated privileges.</div>
-                </div>
-                
-                <div style="margin-top: 20px; text-align: center; color: var(--subtle-green); font-weight: 600; font-family: 'Orbitron', monospace; font-size: 12px;">
-                    ✓ RESPONSIBLE DISCLOSURE PROTOCOL FOLLOWED ✓
-                </div>
-            </div>
-
-            <!-- Service Protocols -->
-            <div class="cyber-grid-layout">
-                <div class="neon-card">
-                    <div class="card-header">
-                        <span class="card-icon">🛡️</span>
-                        OFFENSIVE_OPS.EXE
-                    </div>
-                    <div style="color: var(--text-secondary); margin-bottom: 15px; font-size: 14px;">Attack Vectors:</div>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="margin: 8px 0; padding: 10px; background: var(--glass-bg); border-radius: 6px; border-left: 2px solid var(--accent-teal); backdrop-filter: blur(5px); transition: all 0.3s ease; font-size: 13px;" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">⚡ Web Application Penetration</li>
-                        <li style="margin: 8px 0; padding: 10px; background: var(--glass-bg); border-radius: 6px; border-left: 2px solid var(--accent-cyan); backdrop-filter: blur(5px); transition: all 0.3s ease; font-size: 13px;" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">🥅 Network Infrastructure Assessment</li>
-                        <li style="margin: 8px 0; padding: 10px; background: var(--glass-bg); border-radius: 6px; border-left: 2px solid var(--accent-blue); backdrop-filter: blur(5px); transition: all 0.3s ease; font-size: 13px;" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">📲 Mobile Application Testing</li>
-                        <li style="margin: 8px 0; padding: 10px; background: var(--glass-bg); border-radius: 6px; border-left: 2px solid var(--muted-orange); backdrop-filter: blur(5px); transition: all 0.3s ease; font-size: 13px;" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">🛜 Wireless Security Testing</li>
-                        <li style="margin: 8px 0; padding: 10px; background: var(--glass-bg); border-radius: 6px; border-left: 2px solid var(--subtle-green); backdrop-filter: blur(5px); transition: all 0.3s ease; font-size: 13px;" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">☠️ AV Evasion Techniques</li>
-                        <li style="margin: 8px 0; padding: 10px; background: var(--glass-bg); border-radius: 6px; border-left: 2px solid var(--accent-gray); backdrop-filter: blur(5px); transition: all 0.3s ease; font-size: 13px;" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">🕹️ Kiosk Security Assessment</li>
-                        <li style="margin: 8px 0; padding: 10px; background: var(--glass-bg); border-radius: 6px; border-left: 2px solid var(--accent-cyan); backdrop-filter: blur(5px); transition: all 0.3s ease; font-size: 13px;" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">💻 API Security Audits</li>
-                    </ul>
-                </div>
-                
-                <div class="neon-card">
-                    <div class="card-header">
-                        <span class="card-icon">🔬</span>
-                        RESEARCH_LAB.SYS
-                    </div>
-                    <div style="color: var(--text-secondary); margin-bottom: 15px; font-size: 14px;">Research Focus:</div>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="margin: 8px 0; padding: 10px; background: var(--glass-bg); border-radius: 6px; border-left: 2px solid var(--subtle-green); backdrop-filter: blur(5px); transition: all 0.3s ease; font-size: 13px;" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">🔍 Zero-Day Discovery</li>
-                        <li style="margin: 8px 0; padding: 10px; background: var(--glass-bg); border-radius: 6px; border-left: 2px solid var(--accent-teal); backdrop-filter: blur(5px); transition: all 0.3s ease; font-size: 13px;" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">🛠️ Exploit Development</li>
-                        <li style="margin: 8px 0; padding: 10px; background: var(--glass-bg); border-radius: 6px; border-left: 2px solid var(--accent-cyan); backdrop-filter: blur(5px); transition: all 0.3s ease; font-size: 13px;" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">📊 Security Code Review</li>
-                        <li style="margin: 8px 0; padding: 10px; background: var(--glass-bg); border-radius: 6px; border-left: 2px solid var(--accent-blue); backdrop-filter: blur(5px); transition: all 0.3s ease; font-size: 13px;" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">🧬 Malware Analysis</li>
-                        <li style="margin: 8px 0; padding: 10px; background: var(--glass-bg); border-radius: 6px; border-left: 2px solid var(--muted-orange); backdrop-filter: blur(5px); transition: all 0.3s ease; font-size: 13px;" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">🎯 Red Team Operations</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Communication Channel -->
-            <div class="contact-panel">
-                <div class="status-online">● SYSTEM ONLINE ●</div>
-                <div style="font-family: 'Orbitron', monospace; font-size: 20px; margin-bottom: 25px; color: var(--text-accent);">
-                    READY TO SECURE YOUR DIGITAL FORTRESS
-                </div>
-                <div style="margin-bottom: 25px; color: var(--text-secondary); font-size: 16px; line-height: 1.5;">
-                  Vulnerability Assessments • Penetration testing • Vulnerability research
-                </div>
-                
-                <a href="mailto:surajtheekshanahackerone@gmail.com" class="contact-btn">
-                    📡 ESTABLISH CONNECTION
+        <div class="section">
+            <h2>Recognition From</h2>
+            <div class="companies">
+                <a href="https://www.allianz.com/en/about-us/at-a-glance/strategy-values/it-security.html" target="_blank" class="company">
+                    <img src="https://vectorseek.com/wp-content/uploads/2023/04/Allianz-Group-Logo-Vector.jpg" alt="Allianz" class="company-logo" />
+                    <div>Allianz</div>
                 </a>
-                
-                <a href="https://www.linkedin.com/in/suraj-theekshana-10171023a/" target="_blank" class="contact-btn">
-                    🔗 NEURAL NETWORK
+                <a href="https://www.crowdstrike.com/" target="_blank" class="company">
+                    <img src="https://cdn.brandfetch.io/idfOAAUeK0/w/200/h/200/theme/dark/icon.png?c=1bxid64Mup7aczewSAYMX&t=1667859785600" alt="CrowdStrike" class="company-logo" />
+                    <div>CrowdStrike</div>
                 </a>
-                
-                <div style="margin-top: 30px; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; font-size: 13px;">
-                    <div style="padding: 15px; background: var(--glass-bg); border-radius: 10px; text-align: center; backdrop-filter: blur(8px); border: 1px solid var(--glass-border);">
-                        <div style="color: var(--accent-teal); font-weight: 600; margin-bottom: 6px; font-family: 'Orbitron', monospace; font-size: 11px;">Response Protocol</div>
-                        <div style="color: var(--text-primary); font-size: 14px;">&lt; 24 hours</div>
-                    </div>
-                    <div style="padding: 15px; background: var(--glass-bg); border-radius: 10px; text-align: center; backdrop-filter: blur(8px); border: 1px solid var(--glass-border);">
-                        <div style="color: var(--accent-cyan); font-weight: 600; margin-bottom: 6px; font-family: 'Orbitron', monospace; font-size: 11px;">Time Zone</div>
-                        <div style="color: var(--text-primary); font-size: 14px;">UTC+5:30 [Sri Lanka]</div>
-                    </div>
-                    <div style="padding: 15px; background: var(--glass-bg); border-radius: 10px; text-align: center; backdrop-filter: blur(8px); border: 1px solid var(--glass-border);">
-                        <div style="color: var(--subtle-green); font-weight: 600; margin-bottom: 6px; font-family: 'Orbitron', monospace; font-size: 11px;">Availability</div>
-                        <div style="color: var(--text-primary); font-size: 14px;">24/7 Online</div>
-                    </div>
-                </div>
+                <a href="https://www.nokia.com/about-us/security/" target="_blank" class="company">
+                    <img src="https://static.wikitide.net/avidwiki/1/1f/Nokia_Startup_Movie.jpg" alt="Nokia" class="company-logo" />
+                    <div>Nokia</div>
+                </a>
+                <a href="https://drexel.edu/it/security/" target="_blank" class="company">
+                    <img src="https://cdn.freebiesupply.com/logos/large/2x/drexel-university-logo-svg-vector.svg" alt="Drexel University" class="company-logo" />
+                    <div>Drexel University</div>
+                </a>
+                <a href="https://www.msi.com" target="_blank" class="company">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbiwpp4JAeCRgZnUfltr1VpIe08bKt7djnnWWwByg4t1iEW596YdLSjpWalijrZF8ivVw&usqp=CAU" alt="MSI" class="company-logo" />
+                    <div>MSI</div>
+                </a>
+                <a href="https://www.philips.com/global" target="_blank" class="company">
+                    <img src="https://www.acbengineering.co.th/wp-content/uploads/2020/05/PHILIPS-%E0%B8%AB%E0%B8%A5%E0%B8%AD%E0%B8%94%E0%B9%84%E0%B8%9F-%E0%B8%9A%E0%B8%B1%E0%B8%A5%E0%B8%A5%E0%B8%B2%E0%B8%AA%E0%B8%95%E0%B9%8C-%E0%B9%82%E0%B8%84%E0%B8%A1%E0%B9%84%E0%B8%9F-logo-.png" alt="Philips" class="company-logo" />
+                    <div>Philips</div>
+                </a>
+                <a href="https://wso2.com/security/" target="_blank" class="company">
+                    <img src="https://lh5.googleusercontent.com/proxy/LcYZthkTkOuQw6QhwJvw3dLYSHCGoavDrbbWV2LDMsLEIPOt7yc0cTzeEOwTHezUSBVvJdkPwa1pTsTFZCcbf9vgiLU7M8VvmcNiLDMLqaeriy25Ask" alt="WSO2" class="company-logo" />
+                    <div>WSO2</div>
+                </a>
+                <a href="https://payhere.lk/" target="_blank" class="company">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoeIMMXQtHb84AMCRDeeBMQD7OrNFnGP20Lg&s" alt="PayHere" class="company-logo" />
+                    <div>PayHere</div>
+                </a>
+                <a href="https://www.helakuru.lk/" target="_blank" class="company">
+                    <img src="https://www.helakuru.lk/assets/images/helakuru-logo1.png" alt="Helakuru" class="company-logo" />
+                    <div>Helakuru</div>
+                </a>
+                <a href="https://wso2.com/choreo" target="_blank" class="company">
+                    <img src="https://wso2.cachefly.net/wso2/sites/all/image_resources/choreo/modernize-your-application.webp" alt="Choreo" class="company-logo" />
+                    <div>Choreo</div>
+                </a>
+                <a href="https://bugzero.io/" target="_blank" class="company">
+                    <img src="https://firebasestorage.googleapis.com/v0/b/bug-zero.appspot.com/o/images%2Forganization%2Fbz%2Fbugzero-dp.png?alt=media&token=60e6a9bf-ef01-4e46-9cd0-1f903e3d9362" alt="BugZero" class="company-logo" />
+                    <div>BugZero</div>
+                </a>
+                <a href="https://www.pornhub.com" target="_blank" class="company">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeBdxUS86wJt4xWkzLOeq_Iw8dfYHCkpT1yA&s" alt="PornHub" class="company-logo" />
+                    <div>PornHub</div>
+                </a>
             </div>
+        </div>
 
-            <!-- Terminal Footer -->
-            <div style="margin-top: 40px; text-align: center; font-family: 'JetBrains Mono', monospace; color: var(--text-secondary);">
-                <div style="border-top: 1px solid var(--accent-teal); padding-top: 25px; position: relative;">
-                    <div style="position: absolute; top: -1px; left: 50%; transform: translateX(-50%); width: 80px; height: 1px; background: linear-gradient(90deg, transparent, var(--accent-teal), transparent);"></div>
-                    <div style="font-size: 14px; font-style: italic; opacity: 0.8;">"In cyberspace, honor guides my blade"</div>
-                    <div style="margin-top: 12px; font-size: 11px; opacity: 0.6;">SECURE_SHELL.EXE v2.4.1 | System Interface Active</div>
-                </div>
-            </div>
+        <div class="section">
+            <h2>Services</h2>
+            <ul>
+                <li>Web Application Penetration Testing</li>
+                <li>Network Infrastructure Assessment</li>
+                <li>Mobile Application Security Testing</li>
+                <li>Wireless Security Audits</li>
+                <li>API Security Testing</li>
+                <li>Zero-Day Research</li>
+                <li>Red Team Operations</li>
+            </ul>
+        </div>
+
+        <div class="contact">
+            <h2 style="border: none; margin-bottom: 20px;">Get In Touch</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 20px;">
+                Available for security assessments and vulnerability research
+            </p>
+            <a href="mailto:surajtheekshanahackerone@gmail.com" class="contact-btn">Email Me</a>
+            <a href="https://www.linkedin.com/in/suraj-theekshana-10171023a/" target="_blank" class="contact-btn">LinkedIn</a>
         </div>
     </div>
-
-    <script>
-        // Simplified Custom Cursor System
-        let cursor = document.querySelector('.cursor');
-        let mouseX = 0, mouseY = 0;
-
-        document.addEventListener('mousemove', function(e) {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            
-            cursor.style.left = mouseX + 'px';
-            cursor.style.top = mouseY + 'px';
-        });
-
-        // Minimal Particle System
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleTypes = ['small', 'medium'];
-            
-            function createParticle() {
-                const particle = document.createElement('div');
-                const type = particleTypes[Math.floor(Math.random() * particleTypes.length)];
-                particle.className = `particle ${type}`;
-                particle.style.left = Math.random() * window.innerWidth + 'px';
-                particle.style.animationDuration = (Math.random() * 10 + 8) + 's';
-                particle.style.animationDelay = Math.random() * 5 + 's';
-                
-                particlesContainer.appendChild(particle);
-                
-                setTimeout(() => {
-                    if (particle.parentNode) {
-                        particle.remove();
-                    }
-                }, 18000);
-            }
-            
-            // Create particles less frequently
-            setInterval(createParticle, 800);
-            
-            // Minimal initial particles
-            for (let i = 0; i < 5; i++) {
-                setTimeout(createParticle, i * 500);
-            }
-        }
-
-        // Subtle Hover Effects
-        function initHoverEffects() {
-            const holoButtons = document.querySelectorAll('.holo-btn');
-            
-            holoButtons.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    this.style.transform = 'scale(0.9)';
-                    setTimeout(() => {
-                        this.style.transform = 'scale(1)';
-                    }, 150);
-                });
-            });
-        }
-
-        // Stats Animation
-        function animateStats() {
-            const statFills = document.querySelectorAll('.stat-fill');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const fill = entry.target;
-                        fill.style.animation = 'none';
-                        
-                        setTimeout(() => {
-                            fill.style.animation = 'fillUp 2s ease-out';
-                        }, 100);
-                    }
-                });
-            });
-            
-            statFills.forEach(fill => {
-                observer.observe(fill);
-            });
-        }
-
-        // Initialize when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            createParticles();
-            initHoverEffects();
-            animateStats();
-        });
-
-        // Recommendation Modal Functions
-        function openRecommendationModal(imageSrc) {
-            const modal = document.createElement('div');
-            modal.className = 'recommendation-modal';
-            modal.innerHTML = `
-                <div class="recommendation-modal-content">
-                    <span class="recommendation-close" onclick="closeRecommendationModal()">&times;</span>
-                    <h2 style="color: var(--accent-teal); font-family: 'Orbitron', monospace; margin-bottom: 20px;">RECOMMENDATION LETTER</h2>
-                    <img src="${imageSrc}" alt="Recommendation Letter" />
-                </div>
-            `;
-            document.body.appendChild(modal);
-            modal.style.display = 'block';
-            
-            // Close modal when clicking outside
-            modal.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    closeRecommendationModal();
-                }
-            });
-            
-            // Close on ESC key
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    closeRecommendationModal();
-                }
-            });
-        }
-
-        function closeRecommendationModal() {
-            const modal = document.querySelector('.recommendation-modal');
-            if (modal) {
-                modal.remove();
-            }
-        }
-
-        // Make functions globally available
-        window.openRecommendationModal = openRecommendationModal;
-        window.closeRecommendationModal = closeRecommendationModal;
-    </script>
 </body>
 </html>
